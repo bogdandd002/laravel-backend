@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rams', function (Blueprint $table) {
-            $table-> increments('id');
-            $table -> string('ramsTitle');
-            $table -> string('ramsSubcon');
-            $table -> integer('revNumber');
-            $table -> date('revDate');
-            $table -> string('ramsStatus');
+        Schema::create('subcontractors', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('subconName')->nullable();
+            $table->string('suconActivities')->nullable();
+            $table->date('startDate');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rams');
+        Schema::dropIfExists('subcontractors');
     }
 };
