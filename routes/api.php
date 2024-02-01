@@ -8,6 +8,7 @@ use App\Http\Resources\RamsResource;
 use App\Models\Subcontractors;
 use App\Http\Controllers\SubcontractorController;
 use App\Http\Resources\SubcontractorResource;
+use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,3 +60,8 @@ Route::post('/subcon', [SubcontractorController::class, 'store']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Auth API
+
+Route::post('/auth/register', [UserController::class, 'createUser']);
+Route::post('/auth/login', [UserController::class, 'loginUser']);
