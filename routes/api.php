@@ -31,15 +31,21 @@ Route::get('/rams', function () {
     return RamsResource::collection(Rams::all());
 });
 
+
 Route::put('/rams/{id}', [RamsController::class, 'update']);
 
 Route::delete('/rams/{id}', [RamsController::class, 'destroy']);
 
 Route::post('/rams', [RamsController::class, 'store']);
 
+Route::get('/countrams', [RamsController::class, 'countrams']);
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
 
 // Subcontractors API
 

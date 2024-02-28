@@ -83,10 +83,26 @@ class RamsController extends Controller
                 "message" => "Record deleted"
             ], 200);
         }else{
-            return response()->jason([
+            return response()->json([
                 "message" => "Rams not found"
             ], 404);
         }
     
+    }
+
+    public function countrams()
+    {
+        $countTotal = Rams::count(); 
+        $countOfApp= Rams::where('ramsStatus', 'Approved')->count();
+        $countOfAm= Rams::where('ramsStatus', 'Require amendments')->count();
+        $countOfRe= Rams::where('ramsStatus', 'Require reapproval')->count();
+
+        return [
+            "tot" => $countTotal,
+            "total_ap" => $countOfApp,
+            "total_am" => $countOfAm,
+            "total_re" => $countOfRe
+        ];
+       
     }
 }
